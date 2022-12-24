@@ -1,0 +1,4 @@
+2022.12.24 11:12:21 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/ubuntu/scala/api/juge6-web-api/.metals/lsp.trace.json or /home/ubuntu/.cache/metals/lsp.trace.json
+2022.12.24 11:12:23 INFO  logging to file /home/ubuntu/scala/api/juge6-web-api/.metals/metals.log
+2022.12.24 11:12:23 INFO  Started: Metals version 0.11.9 in workspace '/home/ubuntu/scala/api/juge6-web-api' for client Visual Studio Code 1.73.1.
+2022.12.24 11:12:30 INFO  time: initialize in 6.64s
