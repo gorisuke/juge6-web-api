@@ -8,3 +8,16 @@ services:
       - 9000:9000
     working_dir: /opt/scala
     command: /bin/bash -c "source /root/.sdkman/bin/sdkman-init.sh && sbt run"
+  db:
+    image: 'arm64v8/mysql:8.0-oracle'
+    ports:
+        - 3306:3306
+    environment:
+        MYSQL_ROOT_PASSWORD: 'test'
+        MYSQL_DATABASE: 'juge6'  
+        MYSQL_PASSWORD: 'test'
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  
+    volumes:  
+        - './docker/mysql:/var/lib/mysql'
+    healthcheck:  
+        test: ["CMD", "mysqladmin", "ping"]  
