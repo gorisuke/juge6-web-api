@@ -13,11 +13,24 @@ services:
     ports:
         - 3306:3306
     environment:
-        MYSQL_ROOT_PASSWORD: 'test'
+        MYSQL_ROOT_PASSWORD: 'root'
         MYSQL_DATABASE: 'juge6'  
-        MYSQL_PASSWORD: 'test'
-        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'  
+        MYSQL_USER: docker_user
+        MYSQL_PASSWORD: docker_pass
     volumes:  
         - './docker/mysql:/var/lib/mysql'
     healthcheck:  
-        test: ["CMD", "mysqladmin", "ping"]  
+        test: ["CMD", "mysqladmin", "ping"]
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=docker_user
+      - PMA_PASSWORD=docker_pass
+    ports:
+      - "3096:80"
+    volumes:
+      - ./docker/phpmyadmin/sessions:/sessions

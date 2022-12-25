@@ -10,3 +10,6 @@ target
 .metals/*
 .bloop/*
 docker/mysql/*
+docker/phpmyadmin/sessions/*
+!docker/mysql/.keep
+!/docker/phpmyadmin/sessions/.keep
