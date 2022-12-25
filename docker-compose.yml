@@ -1,0 +1,10 @@
+version: '3'
+services:
+  scala:
+    build: ./docker/scala
+    tty: true
+    volumes: [".:/opt/scala"]
+    ports:
+      - 9000:9000
+    working_dir: /opt/scala
+    command: /bin/bash -c "source /root/.sdkman/bin/sdkman-init.sh && sbt run"
