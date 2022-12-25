@@ -3,6 +3,8 @@ package controllers
 import javax.inject._
 import play.api._
 import play.api.mvc._
+import play.api.libs.json.JsObject
+import play.api.libs.json.Json
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -23,6 +25,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   def hello() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.hello())
+
+    val json: JsObject=
+        Json.obj("hello" -> "world", "language" -> "scala")
+    Ok(json)
   }
+
 }
