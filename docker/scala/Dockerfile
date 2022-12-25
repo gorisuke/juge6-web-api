@@ -15,4 +15,3 @@ RUN source $HOME/.sdkman/bin/sdkman-init.sh && \
     yes | sdk install sbt && \
     rm -rf $HOME/.sdkman/archives/* && \
     rm -rf $HOME/.sdkman/tmp/*
-RUN 
