@@ -5,6 +5,8 @@ import play.api._
 import play.api.mvc._
 import play.api.libs.json.JsObject
 import play.api.libs.json.Json
+import akka.http.scaladsl.model.HttpHeader
+import play.api.Logger
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -20,15 +22,31 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
+
+  val logger: Logger = Logger(getClass)
+
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
 
   def hello() = Action { implicit request: Request[AnyContent] =>
 
-    val json: JsObject=
+    val json: JsObject =
         Json.obj("hello" -> "world", "language" -> "scala")
     Ok(json)
   }
 
+  def ping() = Action { implicit request: Request[AnyContent] =>
+    Ok("pong")
+  }
+
+  def getUser() = Action { implicit request: Request[AnyContent] =>
+    val id: String = request.getQueryString("id").getOrElse("0")
+    
+    val json: JsObject =
+      Json.obj("id" -> id, "name" -> "John Doe")
+    Ok(json)
+  }
+
 }
+
