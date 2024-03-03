@@ -42,10 +42,17 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   def getUser() = Action { implicit request: Request[AnyContent] =>
     val id: String = request.getQueryString("id").getOrElse("0")
-    
+    val name: String = "Test"
     val json: JsObject =
-      Json.obj("id" -> id, "name" -> "John Doe")
+      Json.obj("id" -> id, "name" -> name)
     Ok(json)
+  }
+
+  // POSTメソッドでメールアドレスと氏名とパスワードを受け取りユーザー登録を行う
+  def registerUser() = Action { implicit request: Request[AnyContent] =>
+    val response: JsObject =
+      Json.obj("email" -> "OK", "name" -> "OK")
+    Ok(response)
   }
 
 }
